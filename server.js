@@ -9,10 +9,24 @@ const app = express()
 // const dbUrl = process.env.ATLASDB_URL;
 // mongoose.connect(dbUrl)
 
+// mongoose.connect('mongodb+srv://vkc140:DuEn4M2nUuk0E3Ps@cluster0.l5s5pvd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   // Any other options you want to add
+// });
+
+//const mongoose = require('mongoose');
+
 mongoose.connect('mongodb+srv://vkc140:DuEn4M2nUuk0E3Ps@cluster0.l5s5pvd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  // Any other options you want to add
+  connectTimeoutMS: 30000, // Increase connection timeout to 30 seconds
+  bufferCommands: false, // Disable command buffering
+  bufferMaxEntries: 0, // Set bufferMaxEntries to 0 to disable buffering
+});
+
+mongoose.connection.on('error', (err) => {
+  console.error('MongoDB connection error:', err);
 });
 
 app.set("views", "./view")
