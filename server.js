@@ -1,7 +1,7 @@
 const express = require('express')
 const articleRouter = require("./routes/articles")
 const Article = require('./models/article')
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const methodOverride = require('method-override')
 const app = express()
 
@@ -17,12 +17,26 @@ const app = express()
 
 //const mongoose = require('mongoose');
 
+// mongoose.connect('mongodb+srv://vkc140:DuEn4M2nUuk0E3Ps@cluster0.l5s5pvd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+//   connectTimeoutMS: 30000, // Increase connection timeout to 30 seconds
+//   bufferCommands: false, // Disable command buffering
+//   bufferMaxEntries: 0, // Set bufferMaxEntries to 0 to disable buffering
+// });
+
+// mongoose.connection.on('error', (err) => {
+//   console.error('MongoDB connection error:', err);
+// });
+
+// const mongoose = require('mongoose');
+
 mongoose.connect('mongodb+srv://vkc140:DuEn4M2nUuk0E3Ps@cluster0.l5s5pvd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  connectTimeoutMS: 30000, // Increase connection timeout to 30 seconds
-  bufferCommands: false, // Disable command buffering
-  bufferMaxEntries: 0, // Set bufferMaxEntries to 0 to disable buffering
+  connectTimeoutMS: 30000,
+  bufferCommands: false,
+  bufferMaxEntries: 0,
 });
 
 mongoose.connection.on('error', (err) => {
