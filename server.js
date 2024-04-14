@@ -32,11 +32,11 @@ const app = express()
 // const mongoose = require('mongoose');
 
 mongoose.connect('mongodb+srv://vkc140:DuEn4M2nUuk0E3Ps@cluster0.l5s5pvd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+  // useNewUrlParser: true,
+  // useUnifiedTopology: true,
   connectTimeoutMS: 30000,
-  bufferCommands: false,
-  bufferMaxEntries: 0,
+  // bufferCommands: false,
+  // bufferMaxEntries: 0,
 });
 
 mongoose.connection.on('error', (err) => {
