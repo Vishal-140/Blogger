@@ -1,2 +1,2 @@
-# Blogger.com
+# Blogger
 #  https://blogger-2.onrender.com/
