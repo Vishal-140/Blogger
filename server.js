@@ -5,14 +5,14 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override')
 const app = express()
 
-mongoose.connect('mongodb+srv://vkc140:svy0R17CxhJihQM2@cluster0.lt5be.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  connectTimeoutMS: 30000
+mongoose.connect(process.env.MONGODB_URI || 'your_mongodb_uri', {
+  connectTimeoutMS: 30000,
+  socketTimeoutMS: 30000,
+  serverSelectionTimeoutMS: 30000,
 }).then(() => {
-  console.log('MongoDB se successfully connect ho gaya!')
-}).catch((err) => {
-  console.error('MongoDB connection error:', err)
+  console.log('MongoDB Connected Successfully')
+}).catch(err => {
+  console.error('MongoDB Connection Error:', err)
 })
 
 app.set("views", "./view")
@@ -26,4 +26,7 @@ app.get('/', async(req, res) => {
 
 app.use('/articles', articleRouter)
 
-app.listen(3000)
+const PORT = process.env.PORT || 3000
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server is running on port ${PORT}`)
+})
